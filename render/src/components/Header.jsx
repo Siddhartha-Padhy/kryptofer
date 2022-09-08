@@ -9,7 +9,7 @@ function Header() {
     <div
       className="w-full p-5 text-center min-h-[60vh]"
       style={{
-        backgroundImage: "url('cover_image.png')",
+        backgroundImage: `url(${process.env.PUBLIC_URL + '/cover_image.png'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

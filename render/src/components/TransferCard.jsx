@@ -10,7 +10,7 @@ function TransferCard() {
       <input
         type="text"
         placeholder="To Account"
-        className="rounded p-2 m-2 w-full"
+        className="rounded-lg p-2 m-2 w-full"
         name="addressTo"
         onChange={(e) => handleChange(e, 'addressTo')}
       />
@@ -18,14 +18,15 @@ function TransferCard() {
         type="number"
         placeholder="Amount"
         step={0.0001}
-        className="rounded p-2 m-2 w-full"
+        className="rounded-lg p-2 m-2 w-full"
         name="amount"
+        min={0}
         onChange={(e) => handleChange(e, 'amount')}
       />
       <input
         type="text"
         placeholder="Message"
-        className="rounded p-2 m-2 w-full"
+        className="rounded-lg p-2 m-2 w-full"
         name="message"
         onChange={(e) => handleChange(e, 'message')}
       />

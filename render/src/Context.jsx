@@ -16,11 +16,6 @@ const getEthereumContract = () => {
     signer,
   )
 
-  console.log({
-    provider,
-    signer,
-    transactionContract,
-  })
   return transactionContract
 }
 
@@ -94,10 +89,12 @@ export const TransactionProvider = ({ children }) => {
         await transactionHash.wait()
         console.log(`Success - ${transactionHash.hash}`)
         setLoading(false)
+        window.location.reload()
       } else {
         console.log('No ethereum object detected')
       }
     } catch (error) {
+      alert('Something went wrong try again!')
       console.error(error)
     }
   }
@@ -126,8 +123,6 @@ export const TransactionProvider = ({ children }) => {
     try {
       if (accounts.length) {
         setConnectedAccount(accounts[0])
-
-        //   getAllTransactions()
       } else {
         console.log('No accounts found')
       }
