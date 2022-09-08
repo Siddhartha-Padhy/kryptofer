@@ -5,7 +5,7 @@ import { MdAccountBalanceWallet } from 'react-icons/md'
 function Navbar() {
   const { connectedAccount } = useContext(TransactionContext)
   return (
-    <div className="w-full bg-blue-600 p-2 flex flex-row justify-between">
+    <div className="w-full bg-blue-800 p-2 flex flex-row justify-between">
       <h3 className="text-white text-lg">Kryptofer</h3>
       {connectedAccount !== '' ? (
         <h3 className="text-white text-lg flex flex-row">

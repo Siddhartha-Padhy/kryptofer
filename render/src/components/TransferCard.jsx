@@ -1,18 +1,50 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TransactionContext } from '../Context'
 
 function TransferCard() {
+  const { handleChange, loading, form, makeTransaction } = useContext(
+    TransactionContext,
+  )
   return (
-    <div className="bg-slate-700 p-4 my-3 flex flex-col rounded-md w-full sm:w-4/5 shadow-xl">
+    <div className="bg-slate-900 p-4 my-3 rounded-l-2xl w-full shadow-xl">
       <input
         type="text"
         placeholder="To Account"
-        className="rounded p-2 my-2"
+        className="rounded p-2 m-2 w-full"
+        name="addressTo"
+        onChange={(e) => handleChange(e, 'addressTo')}
       />
-      <input type="number" placeholder="Amount" className="rounded p-2 my-2" />
-      <input type="text" placeholder="Message" className="rounded p-2 my-2" />
-      <button className="rounded-full bg-blue-700 text-white p-2 m-2">
-        Send
-      </button>
+      <input
+        type="number"
+        placeholder="Amount"
+        step={0.0001}
+        className="rounded p-2 m-2 w-full"
+        name="amount"
+        onChange={(e) => handleChange(e, 'amount')}
+      />
+      <input
+        type="text"
+        placeholder="Message"
+        className="rounded p-2 m-2 w-full"
+        name="message"
+        onChange={(e) => handleChange(e, 'message')}
+      />
+      {loading ? (
+        <div className="flex justify-center items-center py-3">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-700" />
+        </div>
+      ) : (
+        <button
+          className="rounded-full bg-blue-700 text-white p-2 m-2 w-full"
+          onClick={() => {
+            const { addressTo, amount, message } = form
+            if (!addressTo || !amount || !message) return
+            makeTransaction()
+          }}
+        >
+          Send Now
+        </button>
+      )}
     </div>
   )
 }
